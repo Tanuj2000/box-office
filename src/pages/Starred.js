@@ -23,6 +23,8 @@ const Starred = () => {
           setError(err.message);
           setisLoading(false);
         });
+    } else {
+      setisLoading(false);
     }
   }, [starred]);
   return (
