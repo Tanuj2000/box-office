@@ -14,7 +14,7 @@ const Starred = () => {
     if (starred && starred.length > 0) {
       const promises = starred.map(showId => apiGet(`/shows/${showId}`));
       Promise.all(promises)
-        .then(apiData=>apiData.map(show=>({show})))
+        .then(apiData => apiData.map(show => ({ show })))
         .then(results => {
           setShows(results);
           setisLoading(false);
@@ -30,7 +30,7 @@ const Starred = () => {
       {isLoading && <div>Shows are still Loading</div>}
       {error && <div>Error occured:{error}</div>}
       {!isLoading && !shows && <div>No shows were added</div>}
-      {!isLoading && !error && shows && <ShowGrid data={shows}/>}
+      {!isLoading && !error && shows && <ShowGrid data={shows} />}
     </MainPageLayout>
   );
 };
