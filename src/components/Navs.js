@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React,{memo} from 'react';
 import { useLocation } from 'react-router-dom';
 import { NavList, LinkStyled } from './Navs.styled';
 
@@ -8,14 +8,18 @@ const LINKS = [
   { to: '/starred', text: 'Starred' },
 ];
 const Navs = () => {
-  const location=useLocation();
-  console.log('location',location);
+  const location = useLocation();
   return (
     <div>
       <NavList>
         {LINKS.map(item => (
           <li key={item.to}>
-            <LinkStyled to={item.to} className={item.to===location.pathname?'active':''}>{item.text}</LinkStyled>
+            <LinkStyled
+              to={item.to}
+              className={item.to === location.pathname ? 'active' : ''}
+            >
+              {item.text}
+            </LinkStyled>
           </li>
         ))}
       </NavList>
@@ -23,4 +27,4 @@ const Navs = () => {
   );
 };
 
-export default Navs;
+export default memo(Navs);
